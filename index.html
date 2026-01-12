@@ -2,84 +2,39 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Affiliate Produk Viral</title>
+  <title>Affiliate Video Generator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: #fff;
-      padding: 20px;
-    }
-    .card {
-      max-width: 400px;
-      margin: auto;
-      background: #1c1c1c;
-      padding: 15px;
-      border-radius: 12px;
-    }
-    img {
-      width: 100%;
-      border-radius: 10px;
-    }
-    input, button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 8px;
-      border: none;
-    }
-    button {
-      background: orange;
-      font-weight: bold;
-    }
-    a {
-      display: block;
-      margin-top: 10px;
-      background: red;
-      color: white;
-      text-align: center;
-      padding: 12px;
-      text-decoration: none;
-      border-radius: 8px;
-    }
-  </style>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="card">
-  <h2>Affiliate Generator</h2>
+  <div class="card">
+    <h2>Affiliate Video Generator</h2>
 
-  <input type="text" id="link" placeholder="Masukkan link affiliate">
-  <input type="text" id="promo" placeholder="Teks promo">
-  <input type="file" id="image">
+    <!-- INPUT -->
+    <input type="text" id="link" placeholder="Masukkan link affiliate">
+    <input type="text" id="promo" placeholder="Teks promo (contoh: Diskon 50%)">
+    <input type="file" id="image" accept="image/*">
 
-  <button onclick="generate()">Preview</button>
+    <!-- BUTTON -->
+    <button onclick="generate()">Preview Produk</button>
 
-  <img id="previewImg">
-  <p id="promoText"></p>
-  <a id="buyBtn" target="_blank">Beli Sekarang</a>
-</div>
+    <!-- PREVIEW -->
+    <img id="previewImg">
+    <p id="promoText"></p>
+    <a id="buyBtn" target="_blank">Beli Sekarang</a>
 
-<script>
-function generate() {
-  const link = document.getElementById("link").value;
-  const promo = document.getElementById("promo").value;
-  const img = document.getElementById("image").files[0];
+    <!-- VIDEO CANVAS -->
+    <canvas id="videoCanvas" width="720" height="1280" style="display:none;"></canvas>
 
-  if (!link || !img) {
-    alert("Lengkapi data!");
-    return;
-  }
+    <!-- VIDEO BUTTON -->
+    <button onclick="generateVideo()">Generate Video</button>
+    <a id="downloadVideo" style="display:none;">Download Video</a>
+  </div>
 
-  const reader = new FileReader();
-  reader.onload = () => document.getElementById("previewImg").src = reader.result;
-  reader.readAsDataURL(img);
-
-  document.getElementById("promoText").innerText = promo;
-  document.getElementById("buyBtn").href = link;
-}
-</script>
-
+  <!-- JS -->
+  <script src="script.js"></script>
 </body>
 </html>
